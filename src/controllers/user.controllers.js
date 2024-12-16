@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 
 // Create a new user
-export const createUser = async (req, res) => {
+const createUser = async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
@@ -14,7 +14,7 @@ export const createUser = async (req, res) => {
 };
 
 // Get all users
-export const getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
     res.status(200).json(users);
@@ -26,7 +26,7 @@ export const getAllUsers = async (req, res) => {
 };
 
 // Get a single user by ID
-export const getUserById = async (req, res) => {
+const getUserById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user)
@@ -40,7 +40,7 @@ export const getUserById = async (req, res) => {
 };
 
 // Update a user
-export const updateUser = async (req, res) => {
+const updateUser = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!user)
@@ -56,7 +56,7 @@ export const updateUser = async (req, res) => {
 };
 
 // Delete a user
-export const deleteUser = async (req, res) => {
+const deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
     if (!user)
@@ -72,3 +72,5 @@ export const deleteUser = async (req, res) => {
     });
   }
 };
+
+export {createUser , getAllUsers , getUserById , updateUser , deleteUser};

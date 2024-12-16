@@ -1,7 +1,7 @@
 import Post from "../models/post.model.js";
 
 // Create a new post
-export const createPost = async (req, res) => {
+const createPost = async (req, res) => {
   try {
     const post = new Post(req.body);
     await post.save();
@@ -14,7 +14,7 @@ export const createPost = async (req, res) => {
 };
 
 // Get all posts
-export const getAllPosts = async (req, res) => {
+const getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find().populate('userId');
     res.status(200).json(posts);
@@ -26,7 +26,7 @@ export const getAllPosts = async (req, res) => {
 };
 
 // Get a single post by ID
-export const getPostById = async (req, res) => {
+const getPostById = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id).populate('userId comments');
     if (!post)
@@ -42,7 +42,7 @@ export const getPostById = async (req, res) => {
 };
 
 // Update a post
-export const updatePost = async (req, res) => {
+const updatePost = async (req, res) => {
   try {
     const post = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!post)
@@ -58,7 +58,7 @@ export const updatePost = async (req, res) => {
 };
 
 // Delete a post
-export const deletePost = async (req, res) => {
+const deletePost = async (req, res) => {
   try {
     const post = await Post.findByIdAndDelete(req.params.id);
     if (!post)
@@ -74,3 +74,6 @@ export const deletePost = async (req, res) => {
     });
   }
 };
+
+
+export {createPost , getAllPosts , getPostById , updatePost , deletePost}

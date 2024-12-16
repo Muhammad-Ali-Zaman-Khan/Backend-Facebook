@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./src/db/index.js";
 
-// import userRoutes from "./src/routes/userRoutes.js"; // Double-check the path
-// import postRoutes from "./src/routes/postRoutes.js"; 
+import userRoutes from "./src/routes/user.routes.js"
+import postRoutes from "./src/routes/post.routes.js"
 import commentRoutes from "./src/routes/comment.routes.js" 
 
 dotenv.config();
@@ -17,8 +17,8 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-// app.use("/users", userRoutes); 
-// app.use("/posts", postRoutes); 
+app.use("/users", userRoutes); 
+app.use("/posts", postRoutes); 
 app.use("/comments", commentRoutes); 
 
 // Test Route
