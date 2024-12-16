@@ -16,7 +16,7 @@ const createPost = async (req, res) => {
 // Get all posts
 const getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find().populate('userId');
+    const posts = await Post.find().populate('userID');
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({
@@ -28,7 +28,7 @@ const getAllPosts = async (req, res) => {
 // Get a single post by ID
 const getPostById = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id).populate('userId comments');
+    const post = await Post.findById(req.params.id).populate('userID Comments');
     if (!post)
       return res.status(404).json({
         message: 'Post not found',

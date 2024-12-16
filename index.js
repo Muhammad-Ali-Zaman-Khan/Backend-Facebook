@@ -17,9 +17,9 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use("/users", userRoutes); 
-app.use("/posts", postRoutes); 
-app.use("/comments", commentRoutes); 
+app.use("/api/v1", userRoutes); 
+app.use("/api/v1", postRoutes); 
+app.use("/api/v1", commentRoutes); 
 
 // Test Route
 app.get("/", (req, res) => {
